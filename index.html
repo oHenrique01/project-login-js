@@ -1,15 +1,19 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt-BR">
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Registre-se</title>
+    <title>Login</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500;700&family=Rajdhani:wght@400;500;600&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="index.css">
 </head>
 <body>
-    <section>
-        <h1>Registre-se para usar nosso app!</h1>
+    <section class="auth-card">
+        <h1>Crie sua conta</h1>
+        <p class="subtitle">Conexão segura para seu painel digital.</p>
         <form>
             <label for="name">Nome:</label>
             <input type="text" name="name" id="name">
@@ -19,8 +23,19 @@
             <span id="email-error"></span>
             <label for="password">Senha:</label>
             <input type="password" name="password" id="password">
+            <div style="display: none;" id="password-requirements-container">
+                <span class="password-requirements">A senha deve conter:</span>
+                <ul class="password-requirements-list">
+                    <li>Mínimo de 8 caracteres</li>
+                    <li>Pelo menos uma letra maiúscula</li>
+                    <li>Pelo menos uma letra minúscula</li>
+                    <li>Pelo menos um número</li>
+                    <li>Pelo menos um símbolo</li>
+                </ul>
+            </div>
             <span id="password-error"></span>
-            <button type="submit">Registrar</button>
+            <button type="submit">Criar</button>
+            <span id="create"></span>
         </form>
     </section>
 

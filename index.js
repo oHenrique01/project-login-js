@@ -59,6 +59,23 @@ function removeFromStyles() {
     })
 }
 
+function createAccount () {
+    const validations = {
+            name: validateName,
+            email: validateEmail,
+            password: validatePassword
+        }
+
+        Object.entries(validations).forEach(([key, validate]) => {
+            validate(userInputs[key].value)
+            userInputs[key].classList.add('success')
+        })
+
+        const msgCreate = document.querySelector('#create')
+        msgCreate.textContent = 'Conta criada!'
+        msgCreate.classList.add('msgCreate')
+}
+
 const form = document.querySelector('form')
 
 form.addEventListener('submit', (ev) => {
@@ -66,18 +83,17 @@ form.addEventListener('submit', (ev) => {
     removeFromStyles()
 
     try {
-        validateName(userInputs.name.value)
-        userInputs.name.classList.add('success')
-        validateEmail(userInputs.email.value)
-        userInputs.email.classList.add('success')
-        validatePassword(userInputs.password.value)
-        userInputs.password.classList.add('success')
+        createAccount()
         
     } catch (err) {
-        const campError = document.querySelector(`#${err.input}-error`)
-        campError.textContent = err.message
-        campError.classList.add('error')
+        const fieldError = document.querySelector(`#${err.input}-error`)
+        fieldError.textContent = err.message
     }
 
+})
+
+userInputs.password.addEventListener('focus', () => {
+    const div = document.querySelector('#password-requirements-container')
+    div.style.display = 'block'
 })
 

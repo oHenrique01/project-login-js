@@ -1,53 +1,171 @@
-body {
-    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+:root {
+    --bg-1: #03102a;
+    --bg-2: #001d3d;
+    --accent-1: #00f5d4;
+    --accent-2: #00bbf9;
+    --accent-3: #90e0ef;
+    --text-main: #effbff;
+    --text-muted: #a6c4d6;
+    --danger: #ff5a76;
+    --success: #00d68f;
+    --input-bg: rgba(1, 11, 32, 0.55);
+    --card-bg: rgba(2, 18, 47, 0.72);
 }
+
+* {
+    box-sizing: border-box;
+}
+
+body {
+    align-items: center;
+    background:
+        radial-gradient(circle at 18% 15%, rgba(0, 245, 212, 0.2) 0, transparent 40%),
+        radial-gradient(circle at 85% 85%, rgba(0, 187, 249, 0.2) 0, transparent 35%),
+        linear-gradient(135deg, var(--bg-1), var(--bg-2));
+    color: var(--text-main);
+    display: grid;
+    font-family: "Rajdhani", sans-serif;
+    margin: 0;
+    min-height: 100vh;
+    overflow: hidden;
+    padding: 1.5rem;
+}
+
+.auth-card {
+    backdrop-filter: blur(10px);
+    background: var(--card-bg);
+    border: 1px solid rgba(144, 224, 239, 0.25);
+    border-radius: 1rem;
+    box-shadow: 0 24px 60px -30px rgba(0, 0, 0, 0.8), 0 0 30px rgba(0, 187, 249, 0.25);
+    margin: 0 auto;
+    max-width: 27rem;
+    padding: 2.5rem 2rem;
+    position: relative;
+    width: min(100%, 27rem);
+}
+
+.auth-card::before {
+    background: linear-gradient(120deg, transparent, rgba(0, 245, 212, 0.15), transparent);
+    content: "";
+    height: 140%;
+    left: -30%;
+    position: absolute;
+    top: -20%;
+    transform: rotate(18deg);
+    width: 60%;
+}
+
 h1 {
-    margin: 0 0 1.5rem;
+    font-family: "Orbitron", sans-serif;
+    font-size: clamp(1.45rem, 3.5vw, 2rem);
+    letter-spacing: 0.04em;
+    margin: 0;
+    text-align: center;
+    text-transform: uppercase;
+}
+
+.subtitle {
+    color: var(--text-muted);
+    font-size: 1rem;
+    letter-spacing: 0.02em;
+    margin: 0.75rem 0 1.5rem;
     text-align: center;
 }
-section {
-    background-color: #eaedf1;
-    border-radius: .5rem;
-    box-shadow: 0 8px 24px -16px rgba(0, 0, 0, 0.5);
-    margin: 1.5rem auto;
-    max-width: 25rem;
-    padding: 2rem;
-}
+
 form {
     display: flex;
     flex-direction: column;
+    gap: 0.25rem;
+    position: relative;
+    z-index: 1;
 }
+
 label {
-    margin-top: 1.25rem;
-    margin-bottom: .5rem;
-}
-input {
-    border: 0;
-    border-radius: .25rem;
+    color: var(--accent-3);
     font-size: 1rem;
-    padding: .5rem;
-}
-span {
-    color: #f64348;
-    font-size: .75rem;
-    margin: .25rem;
-}
-button {
-    background-color: #43a5f6;
-    border: 0;
-    border-radius: .25rem;
-    font-size: 1rem;
-    margin-top: 1.5rem;
-    padding: .5rem 0;
+    font-weight: 600;
+    letter-spacing: 0.08em;
+    margin-top: 1rem;
     text-transform: uppercase;
 }
+
+input {
+    background: var(--input-bg);
+    border: 1px solid rgba(173, 232, 244, 0.35);
+    border-radius: 0.65rem;
+    color: var(--text-main);
+    font-family: inherit;
+    font-size: 1.05rem;
+    outline: none;
+    padding: 0.75rem 0.85rem;
+    transition: border-color 0.25s ease, box-shadow 0.25s ease, transform 0.25s ease;
+}
+
+input:focus {
+    border-color: var(--accent-1);
+    box-shadow: 0 0 0 3px rgba(0, 245, 212, 0.16);
+    transform: translateY(-1px);
+}
+
+span {
+    color: var(--danger);
+    font-size: 0.82rem;
+    font-weight: 600;
+    letter-spacing: 0.02em;
+    margin-top: 0.35rem;
+    min-height: 1rem;
+}
+
+button {
+    background: linear-gradient(90deg, var(--accent-1), var(--accent-2));
+    border: 0;
+    border-radius: 0.7rem;
+    color: #03122d;
+    font-family: "Orbitron", sans-serif;
+    font-size: 0.95rem;
+    font-weight: 700;
+    letter-spacing: 0.12em;
+    margin-top: 1.5rem;
+    padding: 0.82rem 0;
+    text-transform: uppercase;
+    transition: transform 0.2s ease, box-shadow 0.2s ease, filter 0.2s ease;
+}
+
 button:hover {
+    box-shadow: 0 10px 24px -12px rgba(0, 245, 212, 0.85);
     cursor: pointer;
-    filter: brightness(0.9);
+    filter: brightness(1.05);
+    transform: translateY(-2px);
 }
+
+button:active {
+    transform: translateY(0);
+}
+
 .error {
-    border: 1px solid #f64348;
+    border: 1px solid var(--danger);
 }
+
 .success {
-    border: 1px solid #43f67f;
+    border: 1px solid var(--success);
+}
+
+.msgCreate {
+    text-align: center;
+    color: var(--success);
+    font-size: 0.82rem;
+    font-weight: 600;
+    letter-spacing: 0.02em;
+    margin-top: 0.35rem;
+    min-height: 1rem;
+}
+
+@media (max-width: 480px) {
+    .auth-card {
+        padding: 2rem 1.25rem;
+    }
+
+    label {
+        font-size: 0.9rem;
+    }
 }
